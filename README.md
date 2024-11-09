@@ -1,2 +1,2 @@
 # DSA-Lab1
-hamna nasir.
+These are mini tasks of my DSA Lab.
