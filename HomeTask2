@@ -1,0 +1,55 @@
+package ArrayOperations;
+public class ArrayOperations {
+    public static void main(String[] args) {
+        double[] numbers = {3.5, 2.1, 4.7, 1.9, 6.3, 5.0, 7.4};
+        double sum = 0;
+        for (double num : numbers) {
+            sum += num;
+        }
+        double mean = sum / numbers.length;
+        System.out.println("Sum of all elements: " + sum);
+        System.out.println("Mean of all elements: " + mean);
+        double key = 4.7;
+        double[][] splitArrays = splitArrayAtKey(numbers, key);
+        if (splitArrays != null) {
+            System.out.println("\nArray split at key " + key + ":");
+            System.out.println("First part: " + arrayToString(splitArrays[0]));
+            System.out.println("Second part: " + arrayToString(splitArrays[1]));
+        } else {
+            System.out.println("\nKey " + key + " not found in the array.");
+        }
+    }
+    public static double[][] splitArrayAtKey(double[] array, double key) {
+        int keyIndex = -1;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == key) {
+                keyIndex = i;
+                break;
+            }
+        }
+        if (keyIndex == -1) {
+            return null;
+        }
+        double[] firstPart = new double[keyIndex];
+        double[] secondPart = new double[array.length - keyIndex];
+        for (int i = 0; i < keyIndex; i++) {
+            firstPart[i] = array[i];
+        }
+        for (int i = keyIndex; i < array.length; i++) {
+            secondPart[i - keyIndex] = array[i];
+        }
+        return new double[][]{firstPart, secondPart};
+    }
+    public static String arrayToString(double[] array) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < array.length; i++) {
+            sb.append(array[i]);
+            if (i < array.length - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+}
