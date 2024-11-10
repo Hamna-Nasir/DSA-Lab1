@@ -1,0 +1,39 @@
+package ArraySwapAndMerge;
+public class ArraySwap {
+    public static void main(String[] args) {
+        int[] array1 = {1, 2, 3, 4};
+        int[] array2 = {5, 6, 7, 8};
+        System.out.println("Before swapping:");
+        System.out.println("Array 1: " + customArrayToString(array1));
+        System.out.println("Array 2: " + customArrayToString(array2));
+        for (int i = 0; i < 4; i++) {
+            int temp = array1[i];
+            array1[i] = array2[i];
+            array2[i] = temp;
+        }
+        System.out.println("\nAfter swapping:");
+        System.out.println("Array 1: " + customArrayToString(array1));
+        System.out.println("Array 2: " + customArrayToString(array2));y
+        int[] arrayToMerge = {9, 10, 11, 12};
+        int[] mergedArray = mergeArray(array1, arrayToMerge);
+        System.out.println("\nMerged Array: " + customArrayToString(mergedArray));
+    }
+    public static String customArrayToString(int[] array) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < array.length; i++) {
+            sb.append(array[i]);
+            if (i < array.length - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+    public static int[] mergeArray(int[] array1, int[] array2) {
+        int[] mergedArray = new int[array1.length + array2.length];
+        System.arraycopy(array1, 0, mergedArray, 0, array1.length);
+        System.arraycopy(array2, 0, mergedArray, array1.length, array2.length);
+        return mergedArray;
+    }
+}
