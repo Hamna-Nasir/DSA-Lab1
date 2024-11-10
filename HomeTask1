@@ -1,0 +1,18 @@
+package SumAndMeanCalculator;
+public class SumAndMeanCalculator {
+    public static void main(String[] args) {
+        double[] numbers = {3.5, 2.1, 4.7, 1.9, 6.3, 5.0, 7.4};
+        double sum = 0;
+        for (double num : numbers) {
+            sum += num;
+        }
+        double mean = sum / numbers.length;
+        System.out.println("Sum of all elements: " + sum);
+        System.out.println("Mean of all elements: " + mean);
+        System.out.println("\nMemory Management Explanation:");
+        System.out.println("1. The array 'numbers' is stored in the heap memory as it is an object.");
+        System.out.println("2. The variables 'sum' and 'mean' are stored in the stack memory as they are local to the method.");
+        System.out.println("3. The JVM handles garbage collection for unused objects, so when 'numbers' goes out of scope (e.g., at the end of the method),");
+        System.out.println("   it may be eligible for garbage collection if no references remain.");
+    }
+}
