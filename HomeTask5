@@ -1,0 +1,35 @@
+package ZigzagSort;
+import java.util.*;
+public class ZigzagSort {
+    public void zigzagSort(int[] arr) {
+        boolean flag = true;  
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (flag) {
+                if (arr[i] > arr[i + 1]) {
+                    int temp = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
+                }
+            } else {
+                if (arr[i] < arr[i + 1]) {
+                    int temp = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
+                }
+            }
+            flag = !flag;
+        }
+    }
+    public static void main(String[] args) {
+        ZigzagSort solution = new ZigzagSort();
+        int[] arr1 = {4, 3, 7, 8, 6, 2, 1};
+        solution.zigzagSort(arr1);
+        System.out.println("Zigzag sorted array: " + Arrays.toString(arr1));
+        int[] arr2 = {1, 4, 3, 2};
+        solution.zigzagSort(arr2);
+        System.out.println("Zigzag sorted array: " + Arrays.toString(arr2));
+        int[] arr3 = {9, 6, 8, 5, 10, 7};
+        solution.zigzagSort(arr3);
+        System.out.println("Zigzag sorted array: " + Arrays.toString(arr3));
+    }
+}
